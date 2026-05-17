@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divte Vault | Enterprise Security Sandbox</title>
+    <meta name="description" content="Divte Vault provides military-grade isolation for your applications. Run untrusted executables seamlessly using advanced Sandboxie and Hyper-V engines.">
+    <meta name="keywords" content="Divte Vault, security sandbox, enterprise security, hardware spoofing, isolated environment, Sandboxie, Hyper-V">
+    <meta name="author" content="Aditya Diwate">
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <script src="script.js?v=1.1"></script>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <nav>
+        <a href="/" class="nav-brand">
+            <img src="assets/logo.png" alt="Divte Vault Logo">
+            DIVTE VAULT
+        </a>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/how-to-use">Documentation</a>
+            <a href="/updates">Updates</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="version-tag">✨ v1.0.0 Now Available</div>
+            <h1>The Ultimate Security Sandbox Ecosystem</h1>
+            <p class="subtitle">Divte Vault provides military-grade isolation for your applications. Run untrusted executables seamlessly using advanced Sandboxie and Hyper-V engines, featuring complete hardware spoofing and zero-trace stealth architecture.</p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+                <a href="#" onclick="downloadLatestRelease(); return false;" class="btn-primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download for Windows
+                </a>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 20px; font-weight: 600;">By Aditya Divte Production</p>
+
+            <div style="margin-top: 40px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px; max-width: 700px; margin-left: auto; margin-right: auto; text-align: left; display: flex; gap: 15px; align-items: flex-start;">
+                <div style="font-size: 24px;">🛡️</div>
+                <div>
+                    <h4 style="color: var(--success); margin-bottom: 8px; font-size: 1.1rem;">Safe & Secure Installation</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">
+                        Because Divte Vault is a brand new release, your browser or Windows SmartScreen may show a warning saying it <strong>"isn't commonly downloaded"</strong> or is an <strong>"unrecognized app"</strong>. This is perfectly normal for new software. 
+                        <br><br>
+                        We guarantee Divte Vault is 100% safe, completely local, and will <strong>never</strong> steal your data. To install, simply click <strong>"Keep"</strong> in your browser, and <strong>"More info" → "Run Anyway"</strong> in Windows.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alternating Features Showcase -->
+        <section class="showcase-section">
+            
+            <!-- Row 1: The Threat -->
+            <div class="showcase-row">
+                <div class="showcase-canvas-container">
+                    <div class="hud">SYSTEM: <span style="color:#ff0055;">UNPROTECTED</span></div>
+                    <canvas id="virusCanvas" width="550" height="350"></canvas>
+                </div>
+                <div class="showcase-text">
+                    <h2>The Invisible Threat</h2>
+                    <p>Every day, millions of seemingly innocent files are downloaded from the internet. Without isolation, a single rogue executable or disguised game installer can silently hijack your entire system, encrypt your personal files, and establish a permanent backdoor connection to hackers.</p>
+                </div>
+            </div>
+
+            <!-- Row 2: The Solution (Jail) -->
+            <div class="showcase-row reverse">
+                <div class="showcase-canvas-container">
+                    <div class="hud">SYSTEM: <span style="color:#10b981;">DIVTE VAULT ACTIVE</span></div>
+                    <canvas id="vaultCanvas" width="550" height="350"></canvas>
+                </div>
+                <div class="showcase-text">
+                    <h2>Unbreakable Isolation</h2>
+                    <p>Divte Vault forces untrusted applications into a secure, hardware-virtualized "Jail". The application believes it has full access to your PC and runs flawlessly, but any malicious code it attempts to deploy is completely trapped and permanently destroyed when the vault closes.</p>
+                </div>
+            </div>
+
+            <!-- Row 3: Identity Spoofing -->
+            <div class="showcase-row">
+                <div class="showcase-canvas-container">
+                    <div class="hud">NETWORK: <span style="color:#38bdf8;">SPOOFING ENABLED</span></div>
+                    <canvas id="spoofCanvas" width="550" height="350"></canvas>
+                </div>
+                <div class="showcase-text">
+                    <h2>Total Identity Masking</h2>
+                    <p>True security extends beyond the filesystem. Divte Vault intercepts and scrambles your system's hardware identifiers (HWID) and completely masks your IP address from the isolated application. Even if an app tries to fingerprint you, all it sees is randomly generated fake data.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Gaming Mode</h3>
+                <p>Powered by Sandboxie-Plus. Delivers ultra-low overhead isolation perfect for high-performance applications, running seamlessly in the background without borders or FPS drops.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Security Mode</h3>
+                <p>Powered by Hyper-V Windows Sandbox. Utilitizes strict hardware virtualization for untrusted software. Features GPU disablement, network cutoff, and hardware identifier spoofing.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👻</div>
+                <h3>Zero-Trace Stealth</h3>
+                <p>The application engine remains completely invisible. Divte Vault automatically intercepts and suppresses all external tray icons and warning dialogs for a 100% native experience.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Smart Persistence</h3>
+                <p>Unlike standard virtual machines, Divte Vault safely persists your game saves and application configuration files directly to your host Documents folder without risking system infection.</p>
+            </div>
+        </section>
+
+        <!-- New Professional Data Section -->
+        <section style="margin: 6rem 0;">
+            <h2 class="section-title">System Requirements</h2>
+            <div class="sys-req-grid">
+                <div class="req-box">
+                    <h4>Minimum Requirements</h4>
+                    <ul>
+                        <li>OS: Windows 10/11 (64-bit)</li>
+                        <li>Processor: Intel Core i3 or AMD equivalent</li>
+                        <li>Memory: 4 GB RAM</li>
+                        <li>Storage: 200 MB available space</li>
+                        <li>Feature: Hardware Virtualization Enabled</li>
+                    </ul>
+                </div>
+                <div class="req-box">
+                    <h4>Recommended for Gaming</h4>
+                    <ul>
+                        <li>OS: Windows 11 (64-bit)</li>
+                        <li>Processor: Intel Core i7 or AMD Ryzen 7</li>
+                        <li>Memory: 16 GB RAM</li>
+                        <li>Storage: NVMe SSD</li>
+                        <li>Feature: Dedicated GPU & Virtualization Enabled</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Aditya Diwate (operating as Aditya Divte Production). All rights reserved.</p>
+        <div style="margin-top: 15px;">
+            <a href="mailto:support@adityadivte.com">support@adityadivte.com</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/privacy">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- Load the animation script -->
+    <script src="animation.js?v=1.1"></script>
+</body>
+</html>

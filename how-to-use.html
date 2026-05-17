@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use | Divte Vault</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <nav>
+        <a href="/" class="nav-brand">
+            <img src="assets/logo.png" alt="Divte Vault Logo">
+            DIVTE VAULT
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/how-to-use" class="active">Documentation</a>
+            <a href="/updates">Updates</a>
+        </div>
+    </nav>
+    <main>
+        <div class="panel">
+            <h2>Getting Started with Divte Vault</h2>
+            <p>Welcome to Divte Vault! Follow these simple steps to isolate your applications.</p>
+            
+            <h3 style="margin: 20px 0 10px 0; color: var(--text-main);">1. Create a Vault</h3>
+            <p>Navigate to the "Create New Vault" tab. Enter a recognizable name for your application. Select the target executable you wish to sandbox.</p>
+            
+            <h3 style="margin: 20px 0 10px 0; color: var(--text-main);">2. Select an Engine</h3>
+            <ul>
+                <li><strong>Sandboxie:</strong> Best for games. Keeps everything isolated but maintains high frame rates and performance. Game saves persist in your Documents folder securely. <br><strong style="color: #ef4444;">WARNING:</strong> Do NOT use this for competitive multiplayer games with Anti-Cheats (e.g., Vanguard, BattlEye). It will trigger an automatic account ban.</li>
+                <li><strong>Hyper-V (Security):</strong> Best for unknown software. Creates a temporary, hardware-isolated Windows environment that is completely destroyed when closed. Requires Windows 10/11 Pro or Enterprise.</li>
+            </ul>
+
+            <h3 style="margin: 20px 0 10px 0; color: var(--text-main);">3. Security Tips</h3>
+            <p><strong>Never</strong> copy, paste, or drag files from inside the isolated vault back out to your real desktop. This completely bypasses the sandbox protection and can cause immediate damage to your PC.</p>
+
+            <h3 style="margin: 20px 0 10px 0; color: var(--text-main);">4. Launch and Manage</h3>
+            <p>Go to "My Vaults". Click the green Play icon to securely launch the executable. You can also explore the isolated file system, wipe the data clean, or delete the vault entirely using the action icons.</p>
+        </div>
+    </main>
+</body>
+</html>

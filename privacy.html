@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Divte Vault</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <nav>
+        <a href="/" class="nav-brand">
+            <img src="assets/logo.png" alt="Divte Vault Logo">
+            DIVTE VAULT
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/how-to-use">Documentation</a>
+            <a href="/updates">Updates</a>
+        </div>
+    </nav>
+    <main>
+        <div class="panel">
+            <div class="legal-header">
+                <h1>Privacy Policy</h1>
+                <p style="margin: 0;"><strong>Effective Date:</strong> May 16, 2026</p>
+                <p style="margin: 0;"><strong>Provider:</strong> Aditya Diwate (operating as Aditya Divte Production)</p>
+            </div>
+            
+            <p>At Aditya Diwate (operating as Aditya Divte Production), we take your privacy and system security extremely seriously. This policy outlines how data is handled when you use the Divte Vault website and desktop application.</p>
+
+            <h2>1. Local Isolation Guarantee</h2>
+            <p>Divte Vault is an offline-first desktop application. The core sandboxing technology (Sandboxie and Hyper-V) operates entirely on your local machine. We do not have access to, nor do we monitor, the files inside your vaults, the applications you run, or the contents of your host file system.</p>
+
+            <h2>2. Telemetry & Analytics Data</h2>
+            <p>To improve software stability and understand how our product is used, we utilize <strong>PostHog Analytics</strong>. This telemetry collects anonymized, non-sensitive metadata, including:</p>
+            <ul>
+                <li>Application launch counts and session durations.</li>
+                <li>General system architecture (e.g., Windows OS version).</li>
+                <li>Usage statistics for specific UI buttons (e.g., Vault creation, engine selection).</li>
+                <li>Website page views and download button clicks.</li>
+            </ul>
+            <p>We <strong>do not</strong> log keystrokes, personal file names, browsing history, or the specific names of the applications you are isolating.</p>
+
+            <h2>3. Auto-Updater Communications</h2>
+            <p>When the application launches, it makes a brief, encrypted HTTPS request to the public GitHub API (`api.github.com`) to check for the latest version tag. This request contains no personal identifier other than your standard IP address, which is processed directly by GitHub in accordance with their privacy policies.</p>
+
+            <h2>4. Third-Party Engines</h2>
+            <p>Divte Vault acts as a wrapper around Windows Hyper-V and Sandboxie-Plus. By using Divte Vault, your isolated instances are subject to the standard data policies of the Microsoft Windows operating system.</p>
+
+            <h2>5. Contact Us</h2>
+            <p>If you have any questions regarding this privacy policy or our data practices, please contact us at <a href="mailto:support@adityadivte.com" style="color: var(--accent-color);">support@adityadivte.com</a> or via our official GitHub repository.</p>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="/legal" class="btn-primary" style="padding: 12px 24px;">← Return to Legal Directory</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
