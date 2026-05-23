@@ -7,67 +7,202 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- CLEAN DEVELOPER DARK THEME (VS CODE STYLE) -->
     <style>
-        .panel { padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 12px; }
-        .step-title { margin: 25px 0 10px 0; color: #3b82f6; font-size: 1.3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
-        .highlight { background: rgba(59, 130, 246, 0.1); padding: 10px; border-left: 4px solid #3b82f6; margin: 10px 0; border-radius: 4px; }
-        .warning { background: rgba(239, 68, 68, 0.1); padding: 10px; border-left: 4px solid #ef4444; margin: 10px 0; border-radius: 4px; }
+        :root {
+            var-bg-base: #0d1117;
+            --bg-surface: #161b22;
+            --bg-darker: #010409;
+            --border-color: #30363d;
+            --border-hover: #8b949e;
+            --accent-blue: #007acc;
+            --text-main: #c9d1d9;
+            --text-heading: #ffffff;
+            --text-muted: #8b949e;
+            --warning-bg: rgba(210, 153, 34, 0.1);
+            --warning-border: #d29922;
+            --danger-bg: rgba(248, 81, 73, 0.1);
+            --danger-border: #f85149;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--bg-darker);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            text-decoration: none;
+        }
+
+        .nav-brand img { height: 24px; }
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-heading); }
+
+        /* Main Content Layout */
+        main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .panel {
+            background-color: var(--bg-darker);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-top: 2.5rem;
+        }
+
+        /* Editor Title Bar */
+        .panel::before {
+            content: 'divte_vault_documentation.md';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 36px;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 6px 6px 0 0;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 36px;
+            padding-left: 1rem;
+        }
+
+        .panel-content { padding: 2rem 3rem; }
+
+        h2 { font-size: 2rem; color: var(--text-heading); margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        h3.step-title { margin: 2rem 0 1rem 0; color: var(--accent-blue); font-size: 1.25rem; }
+        
+        p { margin-bottom: 1rem; }
+        
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; color: var(--text-main); }
+        
+        strong { color: var(--text-heading); }
+        
+        code {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            color: var(--text-heading);
+        }
+
+        /* Callouts */
+        .highlight {
+            background: rgba(88, 166, 255, 0.1);
+            padding: 1.25rem;
+            border-left: 4px solid var(--accent-blue);
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning {
+            background: var(--danger-bg);
+            padding: 1.25rem;
+            border-left: 4px solid var(--danger-border);
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning p { margin-bottom: 0; color: #ff7b72; }
     </style>
 </head>
 <body>
-    <div class="bg-grid"></div>
     <nav>
-        <a href="/" class="nav-brand">
-            <img src="assets/logo.png" alt="Divte Vault Logo">
-            DIVTE VAULT
-        </a>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/how-to-use" class="active">Documentation</a>
-            <a href="/updates">Updates</a>
+        <div class="nav-wrapper">
+            <a href="/" class="nav-brand">
+                <img src="assets/logo.png" alt="Divte Vault Logo">
+                Divte Vault
+            </a>
+            <div class="nav-links">
+                <a href="/">Overview</a>
+                <a href="/how-to-use" class="active">Documentation</a>
+                <a href="/updates">Releases</a>
+            </div>
         </div>
     </nav>
+
     <main>
         <div class="panel">
-            <h2>Getting Started with Divte Vault</h2>
-            <p>Welcome to Divte Vault! Follow this master guide to perfectly configure your Vaults and seamlessly install massive game repacks securely.</p>
-            
-            <h3 class="step-title">1. Create Your Configuration</h3>
-            <p>Navigate to the "Create New Vault" tab. Here is how you should configure your settings:</p>
-            <ul>
-                <li><strong>Vault Name:</strong> Pick a clear name (e.g., "Black Myth Wukong").</li>
-                <li><strong>1. Target Folder (Crucial):</strong> Select the exact folder on your hard drive where you want the game to be saved (e.g., <code>D:\Games</code>). Divte Vault will map this folder directly into the sandbox to ensure native performance.</li>
-                <li><strong>2. Temp Extraction Folder (For Massive Games):</strong> If you are installing a huge FitGirl repack, select an empty folder on a drive that has at least 150GB of free space. This aggressively forces the extraction engine to use this drive, protecting your C: drive from running out of space and crashing!</li>
-            </ul>
-            
-            <h3 class="step-title">2. Select Your Engine</h3>
-            <ul>
-                <li><strong>Sandboxie (Gaming):</strong> Best for installing and playing games. Maintains high frame rates while isolating the game from destroying your Windows registry. <br><span style="color: #ef4444;">WARNING:</span> Do NOT use this for competitive multiplayer games with Anti-Cheats (e.g., Vanguard, BattlEye). It will trigger an automatic account ban.</li>
-                <li><strong>Hyper-V (Security):</strong> Best for highly suspicious software. Creates a temporary, hardware-isolated Windows Virtual Machine that is completely destroyed the moment it is closed.</li>
-            </ul>
+            <div class="panel-content">
+                <h2>Getting Started with Divte Vault</h2>
+                <p>Welcome to the official Divte Vault documentation. Follow this master guide to perfectly configure your secure environments and seamlessly deploy massive application archives.</p>
+                
+                <h3 class="step-title">1. Create Your Configuration</h3>
+                <p>Navigate to the "Create New Vault" tab. Configure your environment parameters as follows:</p>
+                <ul>
+                    <li><strong>Vault Name:</strong> Pick a clear identifier (e.g., <code>Game_Project_01</code>).</li>
+                    <li><strong>1. Target Folder (Crucial):</strong> Select the exact directory on your hard drive where you want the application deployed (e.g., <code>D:\SandboxApps</code>). Divte Vault will map this directory directly into the secure container to ensure native read/write speeds.</li>
+                    <li><strong>2. Temp Extraction Folder (For Massive Archives):</strong> If you are deploying a heavily compressed application archive, select an empty directory on a drive that has at least 150GB of free space. This forces the extraction engine to use this specific drive, preventing your host C: drive from reaching capacity and causing a system crash.</li>
+                </ul>
+                
+                <h3 class="step-title">2. Select Your Engine</h3>
+                <ul>
+                    <li><strong>Sandboxie (High Performance):</strong> Best for installing and executing complex software and games. Maintains high frame rates while isolating the application from modifying your host Windows registry. <br><span style="color: #ff7b72;">WARNING:</span> Do NOT use this for competitive multiplayer applications utilizing Kernel-Level Anti-Cheats (e.g., Vanguard, BattlEye). The isolation layer will trigger automated account bans.</li>
+                    <li><strong>Hyper-V (Maximum Security):</strong> Best for highly suspicious or untrusted software. Creates a temporary, hardware-isolated Windows Virtual Machine that is completely wiped from existence the moment the vault is closed.</li>
+                </ul>
 
-            <h3 class="step-title">3. The 14% Installation Fix (FitGirl Repacks)</h3>
-            <p>If you are installing a heavily compressed game repack, follow these exact steps to avoid the dreaded "ISDone.dll" memory crashes:</p>
-            <div class="highlight">
-                <ol>
-                    <li>Click the <strong>3-dot menu (⋮)</strong> on your new vault and click <strong>"Fix Antivirus Block"</strong>. This temporarily tunnels your Target Folder past Windows Defender so it doesn't silently delete cracked files mid-extraction.</li>
-                    <li>Click <strong>Install</strong> on the Vault to run the installer.</li>
-                    <li>Inside the FitGirl window, you <strong>MUST</strong> check the box that says <em>"Limit installer to 2GB of RAM usage"</em>.</li>
-                    <li>Inside the FitGirl window, you <strong>MUST</strong> browse and change the installation path to exactly match your <strong>Target Folder</strong> (e.g., <code>D:\Games</code>).</li>
-                </ol>
-            </div>
+                <h3 class="step-title">3. The 14% Memory Limitation Fix</h3>
+                <p>If you are deploying a heavily compressed archive and experiencing "ISDone.dll" memory allocation crashes during extraction, execute these exact parameters:</p>
+                <div class="highlight">
+                    <ol>
+                        <li>Click the <strong>3-dot menu (⋮)</strong> on your newly created vault and click <strong>"Fix Antivirus Block"</strong>. This temporarily tunnels your Target Folder past Windows Defender heuristics so it doesn't silently quarantine unsigned custom binaries mid-extraction.</li>
+                        <li>Click <strong>Install</strong> on the Vault to initialize the setup executable.</li>
+                        <li>Inside the third-party installer window, you <strong>MUST</strong> check the parameter box that states <em>"Limit installer to 2GB of RAM usage"</em>.</li>
+                        <li>Inside the installer window, you <strong>MUST</strong> browse and change the deployment path to exactly match your designated <strong>Target Folder</strong> (e.g., <code>D:\SandboxApps</code>).</li>
+                    </ol>
+                </div>
 
-            <h3 class="step-title">4. Linking and Playing</h3>
-            <p>Because Divte Vault perfectly traps your game, the executable is hidden! Here is how to play:</p>
-            <ul>
-                <li>Click the <strong>3-dot menu (⋮)</strong> and select <strong>"Explore Vault"</strong>. This launches an isolated File Explorer so you can visually see exactly where your game files were trapped.</li>
-                <li>Once you find the game's executable path, click the blue <strong>"Link Game"</strong> button on your Vault and select the executable.</li>
-                <li>Click the orange <strong>"Play"</strong> button to securely launch the game!</li>
-            </ul>
+                <h3 class="step-title">4. Linking and Execution</h3>
+                <p>Because Divte Vault perfectly traps your software inside a digital cage, the execution file is hidden from your host machine. Here is how to launch it:</p>
+                <ul>
+                    <li>Click the <strong>3-dot menu (⋮)</strong> and select <strong>"Explore Vault"</strong>. This launches an isolated File Explorer process allowing you to visually verify where your deployment files were trapped.</li>
+                    <li>Once you locate the application's main <code>.exe</code> file, click the blue <strong>"Link Game/App"</strong> button on your Vault dashboard and target that executable.</li>
+                    <li>Click the orange <strong>"Play/Run"</strong> button to securely initialize the application within the sandbox!</li>
+                </ul>
 
-            <h3 class="step-title">5. Security Warnings</h3>
-            <div class="warning">
-                <p><strong>Never</strong> copy, paste, or drag files from inside the isolated "Explore Vault" window back out to your real desktop! This completely bypasses the digital cage and allows viruses to immediately escape onto your real PC!</p>
+                <h3 class="step-title">5. Critical Security Directives</h3>
+                <div class="warning">
+                    <p><strong>SECURITY BREACH WARNING:</strong> Never copy, paste, or drag files from inside the isolated "Explore Vault" window back out to your host desktop! This completely bypasses the digital containment cage and allows trapped malware or untrusted scripts to instantly execute on your unprotected host machine.</p>
+                </div>
             </div>
         </div>
     </main>
