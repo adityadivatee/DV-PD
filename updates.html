@@ -7,37 +7,282 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- CLEAN DEVELOPER DARK THEME (VS CODE STYLE) -->
+    <style>
+        :root {
+            --bg-base: #0d1117;
+            --bg-surface: #161b22;
+            --bg-darker: #010409;
+            --border-color: #30363d;
+            --border-hover: #8b949e;
+            --accent-blue: #007acc;
+            --text-main: #c9d1d9;
+            --text-heading: #ffffff;
+            --text-muted: #8b949e;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Keep legacy classes hidden so script.js doesn't break */
+        .bg-grid, .bg-glow { display: none !important; }
+
+        /* Navigation - Collision Proof */
+        nav {
+            background-color: var(--bg-darker);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            white-space: nowrap; 
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            text-decoration: none;
+            flex-shrink: 0; 
+        }
+
+        .nav-brand img { height: 24px; flex-shrink: 0; }
+
+        .nav-links { 
+            display: flex; 
+            gap: 2rem; 
+            margin-left: 2rem; 
+        }
+        
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-heading); }
+
+        /* Main Content Layout */
+        main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .panel {
+            background-color: var(--bg-darker);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-top: 2.5rem;
+        }
+
+        /* Fake Editor Title Bar */
+        .panel::before {
+            content: 'CHANGELOG.md';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 36px;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 6px 6px 0 0;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 36px;
+            padding-left: 1rem;
+        }
+
+        .panel-content { padding: 2rem 3rem; }
+
+        h2 { 
+            font-size: 2rem; 
+            color: var(--text-heading); 
+            margin-bottom: 0.5rem; 
+        }
+        
+        .description {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Changelog Specific Styles */
+        .changelog-entry {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .changelog-entry:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .version-title {
+            color: var(--accent-blue);
+            font-size: 1.3rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .release-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        ul { margin-left: 1.5rem; }
+        
+        li { 
+            margin-bottom: 0.75rem; 
+            color: var(--text-main); 
+            line-height: 1.6;
+        }
+        
+        li::marker { color: var(--text-muted); }
+        
+        strong { color: var(--text-heading); }
+
+        code {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            color: var(--text-heading);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text-heading); }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .nav-wrapper { padding: 0 1rem; gap: 10px; }
+            .nav-links { gap: 1rem; }
+            .panel-content { padding: 1.5rem; }
+            .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
 </head>
 <body>
     <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    
     <nav>
-        <a href="/" class="nav-brand">
-            <img src="assets/logo.png" alt="Divte Vault Logo">
-            DIVTE VAULT
-        </a>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/how-to-use">Documentation</a>
-            <a href="/updates" class="active">Updates</a>
+        <div class="nav-wrapper">
+            <a href="/" class="nav-brand">
+                <img src="assets/logo.png" alt="Divte Vault Logo">
+                DIVTE VAULT
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/how-to-use">Documentation</a>
+                <a href="/updates" class="active">Updates</a>
+            </div>
         </div>
     </nav>
+
     <main>
         <div class="panel">
-            <h2>Changelog & Updates</h2>
-            <p>Stay up to date with the latest features and security improvements in Divte Vault.</p>
-            
-            <hr style="border: 0; border-top: 1px solid var(--panel-border); margin: 30px 0;">
-            
-            <h3 style="color: var(--accent-color);">v1.0.0 - Initial Release</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">May 16, 2026</p>
-            <ul>
-                <li>Premium light glassmorphism UI redesign.</li>
-                <li>Added dual isolation engines: Sandboxie and Hyper-V Windows Sandbox.</li>
-                <li>Implemented auto-update notifications.</li>
-                <li>Added advanced stealth capabilities to hide the sandbox control panels.</li>
-                <li>Integrated custom system tray notifications for launch abortions.</li>
-            </ul>
+            <div class="panel-content">
+                <h2>Changelog & Updates</h2>
+                <p class="description">Stay up to date with the latest features and security improvements in Divte Vault.</p>
+                
+                <div class="changelog-entry">
+                    <h3 class="version-title">v1.1.0 - The Massive Installer Update</h3>
+                    <span class="release-date">May 23, 2026</span>
+                    <ul>
+                        <li><strong>Custom Temp Drive Selector:</strong> Added a revolutionary new UI option to map a secondary hard drive specifically for temporary extraction files. This prevents your C: drive from crashing during massive 130GB FitGirl repack installations!</li>
+                        <li><strong>Windows Home Compatibility Patch:</strong> Injected a high-speed data tunnel that safely bypasses Sandboxie's virtualization solely for the Windows OS Temp folder, completely eliminating the dreaded 14% ISDone.dll deadlock.</li>
+                        <li><strong>1-Click Antivirus Fix:</strong> Added a hidden "Fix Antivirus Block" option inside the Vault's dropdown menu. Automatically instructs Windows Defender to securely unquarantine and ignore your specific mapped game folders.</li>
+                        <li><strong>Smart Vault Exploration:</strong> Clicking "Explore Vault" now instantly teleports you exactly to the physical target folder inside the sandbox, making linking games infinitely easier.</li>
+                        <li><strong>Quoting Bug Fix:</strong> Refactored the backend Sandboxie execution engine to inject variables directly into the native Node.js Environment Stack, permanently fixing the <code>file write operation failed</code> Windows path errors.</li>
+                        <li><strong>Space-Proof Base64 Pathing:</strong> Upgraded the PowerShell launcher pipeline to mathematically encode executable paths in Base64, guaranteeing that game folders with spaces (like "Black Myth - Wukong [FitGirl Repack]") will never fail to launch.</li>
+                    </ul>
+                </div>
+
+                <div class="changelog-entry">
+                    <h3 class="version-title">v1.0.0 - Initial Release</h3>
+                    <span class="release-date">May 16, 2026</span>
+                    <ul>
+                        <li>Premium dark glassmorphism UI redesign.</li>
+                        <li>Added dual isolation engines: Sandboxie and Hyper-V Windows Sandbox.</li>
+                        <li>Implemented auto-update notifications.</li>
+                        <li>Added advanced stealth capabilities to hide the sandbox control panels.</li>
+                        <li>Integrated custom system tray notifications for launch abortions.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Aditya Dute (Aditya Divte Production). All rights reserved.</p>
+            <div class="footer-links">
+                <a href="mailto:support@adityadivte.com">Support</a>
+                <a href="/terms">Terms</a>
+                <a href="/privacy">Privacy</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
