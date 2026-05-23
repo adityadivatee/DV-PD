@@ -42,6 +42,7 @@
         .bg-grid, .bg-glow { display: none !important; }
 
         /* Navigation */
+      /* Navigation - Updated for spacing */
         nav {
             background-color: var(--bg-darker);
             border-bottom: 1px solid var(--border-color);
@@ -53,26 +54,42 @@
         .nav-wrapper {
             display: flex;
             justify-content: space-between;
-            align-items: left;
+            align-items: center;
             height: 60px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            /* Added min-width and flex-wrap prevention */
+            white-space: nowrap; 
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-heading);
             text-decoration: none;
+            /* Prevents text from squishing */
+            flex-shrink: 0; 
         }
 
-        .nav-brand img { height: 24px; }
+        .nav-brand img { height: 24px; flex-shrink: 0; }
 
-        .nav-links { display: flex; gap: 2rem; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            /* Allows links to take priority */
+            margin-left: 2rem; 
+        }
+
+        /* Added Responsive trigger to prevent overlap on small screens */
+        @media (max-width: 600px) {
+            .nav-wrapper { padding: 0 1rem; gap: 10px; }
+            .nav-links { gap: 1rem; }
+        }
+       
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--text-heading); }
 
