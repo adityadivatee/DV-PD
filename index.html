@@ -11,79 +11,86 @@
     <link rel="icon" type="image/png" href="assets/logo.png">
     <script src="script.js?v=1.1"></script>
 
-    <!-- BESPOKE DEVELOPER-FIRST STYLES (TECH-BRUTALISM) -->
+    <!-- PREMIUM MINIMALIST STYLES -->
     <style>
         :root {
             --bg-main: #000000;
-            --bg-secondary: #0a0a0a;
-            --border-color: #262626;
-            --text-main: #e5e5e5;
-            --text-muted: #737373;
-            --accent-color: #ff3333; /* Stark Security Red */
-            --accent-bg: rgba(255, 51, 51, 0.1);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --font-mono: 'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Consolas, 'Courier New', monospace;
+            --bg-surface: #0a0a0a;
+            --bg-elevated: #141414;
+            --border-subtle: #222222;
+            --border-hover: #333333;
+            --text-primary: #ededed;
+            --text-secondary: #888888;
+            --accent: #ffffff;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
             background-color: var(--bg-main);
-            color: var(--text-main);
+            color: var(--text-primary);
             font-family: var(--font-sans);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
-            border-left: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* The Grid is now a stark technical blueprint, not a glowing background */
-        .bg-grid {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-size: 50px 50px;
-            background-image: 
-                linear-gradient(to right, #111 1px, transparent 1px),
-                linear-gradient(to bottom, #111 1px, transparent 1px);
-            z-index: -2;
-        }
-
-        /* AI uses glows. We kill the glow. */
-        .bg-glow { display: none; }
-
-        /* Strict, blocky navigation */
-        nav {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 1rem 2rem;
-            background: var(--bg-main);
-            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Entirely hiding the grids and glows as requested */
+        .bg-grid, .bg-glow {
+            display: none !important;
+        }
+
+        /* Layout Constraints */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 2rem;
+        }
+
+        /* Clean Navigation */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-subtle);
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
+        }
+
+        .nav-content {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1rem;
-            font-family: var(--font-mono);
-            font-weight: bold;
-            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
             text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.5px;
         }
 
-        .nav-brand img { height: 24px; filter: grayscale(100%) contrast(200%); }
+        .nav-brand img { height: 20px; filter: grayscale(100%); }
 
         .nav-links {
             display: flex;
@@ -91,373 +98,352 @@
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
         }
 
-        .nav-links a:hover, .nav-links a.active { 
-            color: var(--text-main); 
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
 
-        main { padding: 0 2rem; }
-
-        /* Hero Section - Left aligned, aggressive typography */
+        /* Hero Section */
         .hero {
-            text-align: left;
-            padding: 6rem 0 4rem;
-            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            padding: 8rem 0 6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .version-tag {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            margin-bottom: 2rem;
             font-family: var(--font-mono);
-            color: var(--text-main);
-            padding: 4px 8px;
-            font-size: 0.75rem;
-            border: 1px solid var(--border-color);
-            background: var(--bg-secondary);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         h1 {
-            font-size: clamp(2rem, 6vw, 4.5rem);
-            line-height: 1.05;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -0.04em;
             margin-bottom: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: #ffffff;
-            max-width: 900px;
+            max-width: 800px;
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 2rem;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
         }
 
-        /* Brutalist Buttons */
+        /* Minimal Buttons */
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: var(--text-main);
+            gap: 8px;
+            background: var(--accent);
             color: var(--bg-main);
-            padding: 14px 24px;
+            padding: 12px 24px;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            transition: all 0.1s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .btn-primary:hover {
-            background: var(--accent-color);
-            color: #fff;
+            opacity: 0.9;
+            transform: scale(0.98);
         }
 
-        /* Alert Box - Engineered look */
+        /* Subtle Alert Box */
         .alert-box {
-            margin-top: 4rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--accent-color);
-            padding: 24px;
-            max-width: 800px;
+            margin-top: 5rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 700px;
+            text-align: left;
             display: flex;
-            gap: 20px;
+            gap: 1.5rem;
             align-items: flex-start;
         }
 
         .alert-box h4 {
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            text-transform: uppercase;
+            color: var(--text-primary);
             margin-bottom: 8px;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .alert-box p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         /* Showcase Section */
-        .showcase-section { 
-            display: flex; 
-            flex-direction: column; 
+        .showcase-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-subtle);
         }
 
         .showcase-row {
             display: flex;
-            align-items: stretch; /* Make children equal height */
-            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+            gap: 5rem;
         }
 
         .showcase-row.reverse { flex-direction: row-reverse; }
 
         .showcase-canvas-container {
             flex: 1;
-            padding: 2rem;
-            border-right: 1px solid var(--border-color);
+            background: var(--bg-surface);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
             position: relative;
-            background: var(--bg-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .showcase-row.reverse .showcase-canvas-container {
-            border-right: none;
-            border-left: 1px solid var(--border-color);
-        }
-
-        /* Terminal-style HUD */
+        /* Clean System HUD */
         .hud {
             position: absolute;
-            top: 1rem; left: 1rem;
+            top: 1.5rem; left: 1.5rem;
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
+            color: var(--text-secondary);
         }
 
         canvas {
             width: 100%;
-            max-width: 550px;
             height: auto;
-            border: 1px solid var(--border-color);
-            background: #000;
+            border-radius: 6px;
+            display: block;
+            margin-top: 2rem; /* Make room for HUD */
         }
 
-        .showcase-text { 
-            flex: 1; 
-            padding: 4rem 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .showcase-text { flex: 1; }
         
         .showcase-text h2 {
             font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: -0.02em;
+            margin-bottom: 1rem;
         }
 
-        .showcase-text p { color: var(--text-muted); font-size: 1rem; }
+        .showcase-text p { color: var(--text-secondary); font-size: 1.05rem; }
 
-        /* Features Grid - Strict table-like borders */
+        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            border-bottom: 1px solid var(--border-color);
+            gap: 1.5rem;
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-subtle);
         }
 
         .feature-card {
-            padding: 3rem;
-            border-right: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            background: var(--bg-main);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: border-color 0.3s ease;
         }
 
-        /* Fix bottom borders for the grid */
-        .feature-card:nth-child(3), .feature-card:nth-child(4) {
-            border-bottom: none;
-        }
-        .feature-card:nth-child(even) {
-            border-right: none;
-        }
+        .feature-card:hover { border-color: var(--border-hover); }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
+            opacity: 0.8;
             filter: grayscale(100%);
         }
 
         .feature-card h3 { 
-            margin-bottom: 12px; 
-            font-size: 1.1rem;
-            font-family: var(--font-mono);
-            text-transform: uppercase;
+            margin-bottom: 10px; 
+            font-size: 1.1rem; 
+            font-weight: 600;
         }
 
-        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        /* System Requirements Grid */
+        /* System Requirements */
         .section-title { 
-            font-size: 1.5rem; 
-            margin-bottom: 2rem; 
-            font-weight: 700;
-            text-transform: uppercase;
-            font-family: var(--font-mono);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
-            margin-top: 4rem;
+            text-align: center; 
+            font-size: 1.8rem; 
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem; 
         }
         
         .sys-req-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            border: 1px solid var(--border-color);
-            margin-bottom: 4rem;
+            gap: 1.5rem;
+            margin-bottom: 6rem;
         }
 
         .req-box {
-            padding: 2rem;
-        }
-
-        .req-box:first-child {
-            border-right: 1px solid var(--border-color);
-            background: var(--bg-secondary);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 2.5rem;
+            border-radius: 12px;
         }
 
         .req-box h4 {
-            color: var(--text-main);
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
-            font-size: 1rem;
-            font-family: var(--font-mono);
-            text-transform: uppercase;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .req-box ul { list-style: none; }
         
         .req-box li {
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
         }
         
         .req-box li::before {
-            content: "[+]";
-            font-family: var(--font-mono);
-            color: var(--text-main);
-            margin-right: 10px;
+            content: "—";
+            color: var(--text-secondary);
+            margin-right: 12px;
+            opacity: 0.5;
         }
 
         /* Footer */
         footer {
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
+            width: 100%;
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            background: var(--bg-secondary);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
-        footer a { 
-            color: var(--text-main); 
+        .footer-content a { 
+            color: var(--text-secondary); 
             text-decoration: none; 
-            margin-left: 1.5rem; 
+            margin-left: 1.5rem;
+            transition: color 0.2s ease;
         }
-        
-        footer a:hover { text-decoration: underline; }
 
-        /* Responsive */
+        .footer-content a:hover { color: var(--text-primary); }
+
+        /* Responsive Breakpoints */
         @media (max-width: 900px) {
-            .showcase-row, .showcase-row.reverse { flex-direction: column; }
-            .showcase-canvas-container { border-right: none; border-bottom: 1px solid var(--border-color); }
-            .showcase-row.reverse .showcase-canvas-container { border-left: none; }
-            .features-grid { grid-template-columns: 1fr; }
-            .feature-card { border-right: none !important; border-bottom: 1px solid var(--border-color) !important; }
-            .feature-card:last-child { border-bottom: none !important; }
-            .sys-req-grid { grid-template-columns: 1fr; }
-            .req-box:first-child { border-right: none; border-bottom: 1px solid var(--border-color); }
-            footer { flex-direction: column; gap: 1rem; text-align: center; }
-            footer div { margin-top: 1rem; }
-            footer a { margin: 0 0.75rem; }
+            .showcase-row, .showcase-row.reverse { flex-direction: column; gap: 3rem; }
+            .features-grid, .sys-req-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .footer-content a { margin: 0 0.75rem; }
+            .nav-content { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Blueprint Grid remains, Glow is hidden via CSS -->
+    <!-- Kept in DOM for script safety, hidden via CSS -->
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
 
     <nav>
-        <a href="/" class="nav-brand">
-            <img src="assets/logo.png" alt="Divte Vault Logo">
-            DIVTE VAULT
-        </a>
-        <div class="nav-links">
-            <a href="/" class="active">Home</a>
-            <a href="/how-to-use">Docs</a>
-            <a href="/updates">Changelog</a>
+        <div class="nav-content">
+            <a href="/" class="nav-brand">
+                <img src="assets/logo.png" alt="Divte Vault Logo">
+                DIVTE VAULT
+            </a>
+            <div class="nav-links">
+                <a href="/" class="active">Overview</a>
+                <a href="/how-to-use">Documentation</a>
+                <a href="/updates">Changelog</a>
+            </div>
         </div>
     </nav>
 
-    <main>
+    <main class="container">
         <section class="hero">
-            <div class="version-tag">BUILD v1.0.0 :: STABLE</div>
-            <h1>The Ultimate Security Sandbox Ecosystem.</h1>
-            <p class="subtitle">Military-grade isolation for untrusted executables. Powered by Sandboxie and Hyper-V engines, featuring hardware spoofing and zero-trace stealth architecture.</p>
+            <div class="version-tag">Version 1.0.0 is now available</div>
+            <h1>The ultimate security sandbox ecosystem.</h1>
+            <p class="subtitle">Military-grade isolation for untrusted executables. Powered by advanced Sandboxie and Hyper-V engines, featuring hardware spoofing and zero-trace stealth architecture.</p>
             
-            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
                 <a href="#" onclick="downloadLatestRelease(); return false;" class="btn-primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Download .EXE
+                    Download for Windows
                 </a>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Engineered by Aditya Divte Production</span>
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">Developed by Aditya Divte Production</span>
             </div>
 
             <div class="alert-box">
-                <div style="font-size: 24px; filter: grayscale(100%);">⚠️</div>
+                <div style="font-size: 1.5rem; filter: grayscale(100%);">🛡️</div>
                 <div>
                     <h4>Installation Protocol</h4>
                     <p>
-                        As a new cryptographic binary, Windows SmartScreen or browser heuristics may flag Divte Vault as an "unrecognized app". This is standard behavior for new signatures.<br><br>
-                        Execute bypass: Click <strong>"Keep"</strong> in browser -> <strong>"More info"</strong> -> <strong>"Run Anyway"</strong> in Windows. All operations execute strictly locally.
+                        As a new cryptographic binary, Windows SmartScreen or browser heuristics may flag Divte Vault as an "unrecognized app". This is standard behavior for new releases.
+                        <br><br>
+                        We guarantee Divte Vault is 100% safe and operates strictly locally. To execute: Click <strong>"Keep"</strong> in your browser, and <strong>"More info" → "Run Anyway"</strong> in Windows.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Structured Grid Showcase -->
+        <!-- Clean Showcase -->
         <section class="showcase-section">
             
             <div class="showcase-row">
                 <div class="showcase-text">
-                    <h2>The Invisible Threat</h2>
+                    <h2>The Invisible Threat.</h2>
                     <p>Every day, millions of seemingly innocent files are downloaded from the internet. Without isolation, a single rogue executable or disguised game installer can silently hijack your entire system, encrypt your personal files, and establish a permanent backdoor connection to hackers.</p>
                 </div>
                 <div class="showcase-canvas-container">
-                    <div class="hud">SYS_STATUS: <span style="color:#ff3333;">UNPROTECTED</span></div>
+                    <div class="hud">Status: Unprotected</div>
                     <canvas id="virusCanvas" width="550" height="350"></canvas>
                 </div>
             </div>
 
             <div class="showcase-row reverse">
                 <div class="showcase-text">
-                    <h2>Unbreakable Isolation</h2>
+                    <h2>Unbreakable Isolation.</h2>
                     <p>Divte Vault forces untrusted applications into a secure, hardware-virtualized "Jail". The application believes it has full access to your PC and runs flawlessly, but any malicious code it attempts to deploy is completely trapped and permanently destroyed when the vault closes.</p>
                 </div>
                 <div class="showcase-canvas-container">
-                    <div class="hud">SYS_STATUS: <span style="color:#e5e5e5;">VAULT_ACTIVE</span></div>
+                    <div class="hud">Status: Vault Active</div>
                     <canvas id="vaultCanvas" width="550" height="350"></canvas>
                 </div>
             </div>
 
             <div class="showcase-row">
                 <div class="showcase-text">
-                    <h2>Total Identity Masking</h2>
+                    <h2>Total Identity Masking.</h2>
                     <p>True security extends beyond the filesystem. Divte Vault intercepts and scrambles your system's hardware identifiers (HWID) and completely masks your IP address from the isolated application. Even if an app tries to fingerprint you, all it sees is randomly generated fake data.</p>
                 </div>
                 <div class="showcase-canvas-container">
-                    <div class="hud">NET_STATUS: <span style="color:#e5e5e5;">SPOOF_ENABLED</span></div>
+                    <div class="hud">Network: Spoofing Enabled</div>
                     <canvas id="spoofCanvas" width="550" height="350"></canvas>
                 </div>
             </div>
@@ -474,7 +460,7 @@
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
                 <h3>Security Mode</h3>
-                <p>Powered by Hyper-V Windows Sandbox. Utilitizes strict hardware virtualization for untrusted software. Features GPU disablement, network cutoff, and hardware identifier spoofing.</p>
+                <p>Powered by Hyper-V Windows Sandbox. Utilizes strict hardware virtualization for untrusted software. Features GPU disablement, network cutoff, and hardware identifier spoofing.</p>
             </div>
 
             <div class="feature-card">
@@ -490,26 +476,26 @@
             </div>
         </section>
 
-        <h2 class="section-title">Hardware Requirements</h2>
+        <h2 class="section-title">System Requirements</h2>
         <div class="sys-req-grid">
             <div class="req-box">
-                <h4>Base Specifications</h4>
+                <h4>Minimum Requirements</h4>
                 <ul>
-                    <li>OS: Windows 10/11 (64-bit)</li>
-                    <li>Processor: Intel Core i3 or AMD equivalent</li>
-                    <li>Memory: 4 GB RAM</li>
-                    <li>Storage: 200 MB available space</li>
-                    <li>Feature: Hardware Virtualization Enabled</li>
+                    <li>Windows 10/11 (64-bit)</li>
+                    <li>Intel Core i3 or AMD equivalent</li>
+                    <li>4 GB System Memory</li>
+                    <li>200 MB Storage Space</li>
+                    <li>Hardware Virtualization Enabled</li>
                 </ul>
             </div>
             <div class="req-box">
-                <h4>Performance Configuration</h4>
+                <h4>Recommended Configuration</h4>
                 <ul>
-                    <li>OS: Windows 11 (64-bit)</li>
-                    <li>Processor: Intel Core i7 or AMD Ryzen 7</li>
-                    <li>Memory: 16 GB RAM</li>
-                    <li>Storage: NVMe SSD</li>
-                    <li>Feature: Dedicated GPU & Virtualization</li>
+                    <li>Windows 11 (64-bit)</li>
+                    <li>Intel Core i7 or AMD Ryzen 7</li>
+                    <li>16 GB System Memory</li>
+                    <li>NVMe Solid State Drive</li>
+                    <li>Dedicated GPU & Virtualization</li>
                 </ul>
             </div>
         </div>
@@ -517,15 +503,17 @@
     </main>
 
     <footer>
-        <div>&copy; 2026 Aditya Dute (Aditya Divte Production).</div>
-        <div>
-            <a href="mailto:support@adityadivte.com">support@adityadivte.com</a>
-            <a href="/terms">Terms</a>
-            <a href="/privacy">Privacy</a>
+        <div class="footer-content">
+            <div>&copy; 2026 Aditya Dute (Aditya Divte Production). All rights reserved.</div>
+            <div>
+                <a href="mailto:support@adityadivte.com">support@adityadivte.com</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/privacy">Privacy Policy</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Unmodified logic scripts -->
+    <!-- Scripts strictly unmodified for logic preservation -->
     <script src="animation.js?v=1.1"></script>
 </body>
 </html>
