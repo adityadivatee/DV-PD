@@ -7,7 +7,167 @@
     <meta name="description" content="Divte Vault provides military-grade isolation for your applications. Run untrusted executables seamlessly using advanced Sandboxie and Hyper-V engines.">
     <meta name="keywords" content="Divte Vault, security sandbox, enterprise security, hardware spoofing, isolated environment, Sandboxie, Hyper-V">
     <meta name="author" content="Aditya Diwate">
+    
+    <!-- Original stylesheet kept intact so JS dependencies don't break -->
     <link rel="stylesheet" href="style.css?v=1.1">
+    
+    <!-- RETRO OVERRIDE STYLES -->
+    <style>
+        /* Force classic Web 1.0 aesthetics */
+        body {
+            background-color: #c0c0c0 !important; /* Classic Windows gray */
+            color: #000000 !important;
+            font-family: "Times New Roman", Times, serif !important;
+            background-image: none !important;
+        }
+        
+        /* Hide modern fluff entirely */
+        .bg-grid, .bg-glow { 
+            display: none !important; 
+        }
+
+        /* Basic Table-like Navigation */
+        nav {
+            text-align: center !important;
+            border-bottom: 3px groove #ffffff !important;
+            padding: 10px !important;
+            background-color: #c0c0c0 !important;
+            display: block !important;
+        }
+        .nav-brand {
+            font-size: 28px !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+            font-weight: bold !important;
+            color: #000000 !important;
+            text-decoration: none !important;
+            display: block !important;
+            margin-bottom: 10px !important;
+        }
+        .nav-brand img {
+            width: 32px !important;
+            vertical-align: middle !important;
+        }
+        .nav-links {
+            display: block !important;
+        }
+        .nav-links a {
+            color: #0000ee !important;
+            text-decoration: underline !important;
+            margin: 0 15px !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+            font-size: 16px !important;
+        }
+        .nav-links a:visited { color: #551a8b !important; }
+
+        /* General Typography */
+        h1, h2, h3, h4 {
+            font-family: Arial, Helvetica, sans-serif !important;
+            color: #000000 !important;
+        }
+        
+        .hero {
+            text-align: center !important;
+            margin: 30px 0 !important;
+            display: block !important;
+        }
+        
+        .subtitle {
+            font-size: 16px !important;
+            font-family: "Times New Roman", Times, serif !important;
+        }
+
+        /* Windows 95 Button Style */
+        .btn-primary {
+            background-color: #c0c0c0 !important;
+            color: #000000 !important;
+            border-top: 2px solid #ffffff !important;
+            border-left: 2px solid #ffffff !important;
+            border-bottom: 2px solid #404040 !important;
+            border-right: 2px solid #404040 !important;
+            padding: 4px 12px !important;
+            text-decoration: none !important;
+            font-family: "MS Sans Serif", Arial, sans-serif !important;
+            font-size: 14px !important;
+            font-weight: normal !important;
+            display: inline-block !important;
+            cursor: default !important;
+        }
+        .btn-primary:active {
+            border-top: 2px solid #404040 !important;
+            border-left: 2px solid #404040 !important;
+            border-bottom: 2px solid #ffffff !important;
+            border-right: 2px solid #ffffff !important;
+        }
+        .btn-primary svg { 
+            display: none !important; /* Hide modern icons inside buttons */
+        }
+
+        /* Canvas & HUD Overrides */
+        canvas {
+            border: 3px inset #ffffff !important;
+            background-color: #000000 !important;
+            display: block !important;
+            margin: 5px auto !important;
+        }
+        .hud {
+            font-family: "Courier New", Courier, monospace !important;
+            font-weight: bold !important;
+            background: #000080 !important; /* Navy blue */
+            color: #ffffff !important;
+            padding: 2px 5px !important;
+            text-align: left !important;
+            display: inline-block !important;
+            margin-bottom: 5px !important;
+        }
+        .hud span { color: #ffff00 !important; } /* High contrast yellow text */
+
+        /* Block layouts to kill modern CSS Grids and Flexbox */
+        .showcase-section, .features-grid, .sys-req-grid {
+            display: block !important;
+            margin: 0 auto !important;
+            max-width: 800px !important;
+        }
+        .showcase-row {
+            display: block !important;
+            border: 2px groove #ffffff !important;
+            padding: 15px !important;
+            margin-bottom: 20px !important;
+            background-color: #c0c0c0 !important;
+            text-align: center !important;
+        }
+        .showcase-text {
+            text-align: left !important;
+            margin-top: 15px !important;
+            padding-top: 15px !important;
+            border-top: 1px solid #808080 !important;
+        }
+        .feature-card, .req-box {
+            border: 2px groove #ffffff !important;
+            padding: 15px !important;
+            margin-bottom: 15px !important;
+            background-color: #c0c0c0 !important;
+            display: block !important;
+        }
+        
+        .feature-icon {
+            font-size: 24px !important;
+            float: left !important;
+            margin-right: 15px !important;
+        }
+
+        /* Retro Footer */
+        footer {
+            border-top: 3px groove #ffffff !important;
+            padding: 15px !important;
+            text-align: center !important;
+            margin-top: 40px !important;
+            background-color: #c0c0c0 !important;
+        }
+        footer a {
+            margin: 0 10px !important;
+        }
+    </style>
+
     <link rel="icon" type="image/png" href="assets/logo.png">
     <script src="script.js?v=1.1"></script>
 </head>
@@ -28,38 +188,45 @@
 
     <main>
         <section class="hero">
-            <div class="version-tag">✨ v1.0.0 Now Available</div>
+            <div class="version-tag">
+                <!-- Added a classic marquee for the real retro feel -->
+                <marquee width="300" scrollamount="4">✨ v1.0.0 Now Available ✨</marquee>
+            </div>
             <h1>The Ultimate Security Sandbox Ecosystem</h1>
             <p class="subtitle">Divte Vault provides military-grade isolation for your applications. Run untrusted executables seamlessly using advanced Sandboxie and Hyper-V engines, featuring complete hardware spoofing and zero-trace stealth architecture.</p>
             
-            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+            <div style="text-align: center; margin-top: 20px;">
                 <a href="#" onclick="downloadLatestRelease(); return false;" class="btn-primary">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                     Download for Windows
                 </a>
             </div>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 20px; font-weight: 600;">By Aditya Divte Production</p>
+            <p style="font-size: 14px; margin-top: 10px; font-weight: bold;">By Aditya Divte Production</p>
 
-            <div style="margin-top: 40px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px; max-width: 700px; margin-left: auto; margin-right: auto; text-align: left; display: flex; gap: 15px; align-items: flex-start;">
-                <div style="font-size: 24px;">🛡️</div>
-                <div>
-                    <h4 style="color: var(--success); margin-bottom: 8px; font-size: 1.1rem;">Safe & Secure Installation</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">
-                        Because Divte Vault is a brand new release, your browser or Windows SmartScreen may show a warning saying it <strong>"isn't commonly downloaded"</strong> or is an <strong>"unrecognized app"</strong>. This is perfectly normal for new software. 
-                        <br><br>
-                        We guarantee Divte Vault is 100% safe, completely local, and will <strong>never</strong> steal your data. To install, simply click <strong>"Keep"</strong> in your browser, and <strong>"More info" → "Run Anyway"</strong> in Windows.
-                    </p>
-                </div>
+            <!-- Replaced inline modern styles with a classic alert box style -->
+            <div style="margin-top: 30px; border: 3px double #FF0000; padding: 15px; background-color: #FFFFCC; color: #000000; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <table border="0" cellpadding="5">
+                    <tr>
+                        <td valign="top"><font size="+2">🛡️</font></td>
+                        <td valign="top">
+                            <h4 style="margin: 0 0 5px 0; color: #cc0000;">Safe & Secure Installation</h4>
+                            <p style="margin: 0; font-size: 14px;">
+                                Because Divte Vault is a brand new release, your browser or Windows SmartScreen may show a warning saying it <strong>"isn't commonly downloaded"</strong> or is an <strong>"unrecognized app"</strong>. This is perfectly normal for new software. 
+                                <br><br>
+                                We guarantee Divte Vault is 100% safe, completely local, and will <strong>never</strong> steal your data. To install, simply click <strong>"Keep"</strong> in your browser, and <strong>"More info" → "Run Anyway"</strong> in Windows.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </section>
 
-        <!-- Alternating Features Showcase -->
+        <hr>
+
         <section class="showcase-section">
-            
-            <!-- Row 1: The Threat -->
             <div class="showcase-row">
                 <div class="showcase-canvas-container">
-                    <div class="hud">SYSTEM: <span style="color:#ff0055;">UNPROTECTED</span></div>
+                    <div class="hud">SYSTEM: <span>UNPROTECTED</span></div>
                     <canvas id="virusCanvas" width="550" height="350"></canvas>
                 </div>
                 <div class="showcase-text">
@@ -68,10 +235,9 @@
                 </div>
             </div>
 
-            <!-- Row 2: The Solution (Jail) -->
             <div class="showcase-row reverse">
                 <div class="showcase-canvas-container">
-                    <div class="hud">SYSTEM: <span style="color:#10b981;">DIVTE VAULT ACTIVE</span></div>
+                    <div class="hud">SYSTEM: <span>DIVTE VAULT ACTIVE</span></div>
                     <canvas id="vaultCanvas" width="550" height="350"></canvas>
                 </div>
                 <div class="showcase-text">
@@ -80,10 +246,9 @@
                 </div>
             </div>
 
-            <!-- Row 3: Identity Spoofing -->
             <div class="showcase-row">
                 <div class="showcase-canvas-container">
-                    <div class="hud">NETWORK: <span style="color:#38bdf8;">SPOOFING ENABLED</span></div>
+                    <div class="hud">NETWORK: <span>SPOOFING ENABLED</span></div>
                     <canvas id="spoofCanvas" width="550" height="350"></canvas>
                 </div>
                 <div class="showcase-text">
@@ -91,8 +256,9 @@
                     <p>True security extends beyond the filesystem. Divte Vault intercepts and scrambles your system's hardware identifiers (HWID) and completely masks your IP address from the isolated application. Even if an app tries to fingerprint you, all it sees is randomly generated fake data.</p>
                 </div>
             </div>
-
         </section>
+
+        <hr>
 
         <section class="features-grid">
             <div class="feature-card">
@@ -120,12 +286,13 @@
             </div>
         </section>
 
-        <!-- New Professional Data Section -->
-        <section style="margin: 6rem 0;">
-            <h2 class="section-title">System Requirements</h2>
+        <hr>
+
+        <section style="margin: 30px 0;">
+            <h2 align="center">System Requirements</h2>
             <div class="sys-req-grid">
                 <div class="req-box">
-                    <h4>Minimum Requirements</h4>
+                    <h4><u>Minimum Requirements</u></h4>
                     <ul>
                         <li>OS: Windows 10/11 (64-bit)</li>
                         <li>Processor: Intel Core i3 or AMD equivalent</li>
@@ -135,7 +302,7 @@
                     </ul>
                 </div>
                 <div class="req-box">
-                    <h4>Recommended for Gaming</h4>
+                    <h4><u>Recommended for Gaming</u></h4>
                     <ul>
                         <li>OS: Windows 11 (64-bit)</li>
                         <li>Processor: Intel Core i7 or AMD Ryzen 7</li>
@@ -151,14 +318,14 @@
 
     <footer>
         <p>&copy; 2026 Aditya Diwate (operating as Aditya Divte Production). All rights reserved.</p>
-        <div style="margin-top: 15px;">
-            <a href="mailto:support@adityadivte.com">support@adityadivte.com</a>
-            <a href="/terms">Terms of Service</a>
+        <div style="margin-top: 10px;">
+            <a href="mailto:support@adityadivte.com">support@adityadivte.com</a> |
+            <a href="/terms">Terms of Service</a> |
             <a href="/privacy">Privacy Policy</a>
         </div>
     </footer>
 
-    <!-- Load the animation script -->
+    <!-- Scripts remain strictly unmodified to protect all canvas animations and logic -->
     <script src="animation.js?v=1.1"></script>
 </body>
 </html>
